@@ -1,11 +1,9 @@
 ## UI Automation
-to run selenium tests:
+To run selenium tests:
 
-make sure node.js installed
-make sure geckodriver has been added to path
-
-change directory to selenium
-
+* make sure node.js installed
+* make sure geckodriver has been added to path
+* change directory to selenium
 
 `npm install //installs dependencies`
 
