@@ -20,7 +20,7 @@ class CheckoutStepTwo extends PageBase {
       const itemQtyNum = parseInt(itemQtyStr, 10);
       return itemQtyNum;
     } catch (error) {
-      console.log(`returning 0, could not find: ${itemName}`);
+      this.plog(`returning 0, could not find: ${itemName}`);
       return 0;
     }
   }

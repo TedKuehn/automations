@@ -19,7 +19,7 @@ class CheckoutStepOne extends PageBase {
     await this.driver.findElement(
         By.xpath('//input[@value=\'CONTINUE\']')).click();
     const taxText = await this.getTextByClass('summary_tax_label');
-    console.log(`click took us to new page if tax has number: ${taxText}`);
+    this.plog(`click took us to new page if tax has number: ${taxText}`);
   }
 }
 

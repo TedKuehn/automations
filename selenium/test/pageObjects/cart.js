@@ -19,7 +19,7 @@ class Cart extends PageBase {
           By.xpath(itemQtyXpath)).getText();
       return itemQty;
     } catch (error) {
-      console.log(`returning 0, could not find: ${itemName}`);
+      this.plog(`returning 0, could not find: ${itemName}`);
       return 0;
     }
   }

@@ -36,7 +36,7 @@ class Inventory extends PageBase {
           By.xpath('.//button[text()=\'ADD TO CART\']')).click();
     } catch (error) {
       if (error.toString().includes('StaleElement')) {
-        console.log('Stale');
+        this.plog('Stale');
         this.addToCartByName(itemName);
       }
     }

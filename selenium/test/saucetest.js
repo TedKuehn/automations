@@ -42,13 +42,13 @@ describe('saucedemo example', () => {
     const zaFirstItem = await this.inventory.getFirstItemName();
     await this.inventory.sortBy('az');
     const azFirstItem = await this.inventory.getFirstItemName();
-    console.log(`${azFirstItem} should not equal ${zaFirstItem}`);
+    this.pageBase.plog(`${azFirstItem} should not equal ${zaFirstItem}`);
 
     await this.inventory.sortBy('lohi');
     const loFirstPrice = await this.inventory.getFirstItemPrice();
     await this.inventory.sortBy('hilo');
     const hiFirstPrice = await this.inventory.getFirstItemPrice();
-    console.log(`${loFirstPrice} should not equal ${hiFirstPrice}`);
+    this.pageBase.plog(`${loFirstPrice} should not equal ${hiFirstPrice}`);
   });
 
   it('Add two or more items to the shopping cart', async () => {
@@ -90,7 +90,7 @@ describe('saucedemo example', () => {
     const cartQty2 = await this.cart.numberOfItems('Sauce Labs Bolt T-Shirt');
     const cartQty3 = await this.cart.numberOfItems('Sauce Labs Bike Light');
     const cartPrice2 = await this.cart.itemsPrice('Sauce Labs Bolt T-Shirt');
-    console.log(`cartPrice2: ${cartPrice2}`);
+    this.pageBase.plog(`cartPrice2: ${cartPrice2}`);
     const cartPrice3 = await this.cart.itemsPrice('Sauce Labs Bike Light');
     // next 3 asserts: On cart page, Assert you are purchasing the correct items
     assert.equal(cartQty1, 0, 'removed item should by QTY 0');
@@ -122,27 +122,27 @@ describe('saucedemo example', () => {
         'Sauce Labs Bolt T-Shirt');
     const checkoutPrice3 = await this.checkoutStepTwo.itemsPrice(
         'Sauce Labs Bike Light');
-    console.log(`${checkoutPrice2} vs ${cartPrice2}`);
+    this.pageBase.plog(`${checkoutPrice2} vs ${cartPrice2}`);
     assert.equal(checkoutPrice2, cartPrice2,
         'checkout price 2 matches cart price');
     assert.equal(checkoutPrice3, cartPrice3,
         'checkout price 3 matches cart price');
 
-    console.log(`${checkoutPrice2} X ${checkoutQty2}`);
+    this.pageBase.plog(`${checkoutPrice2} X ${checkoutQty2}`);
 
     const expectedSubtotal = (checkoutPrice2 * checkoutQty2) +
     (checkoutPrice3 * checkoutQty3);
-    console.log(`expected subtotal: ${expectedSubtotal}`);
+    this.pageBase.plog(`expected subtotal: ${expectedSubtotal}`);
     const actualSubtotal = await this.pageBase.getTextByClass(
         'summary_subtotal_label');
-    console.log(`actual subtotal: ${actualSubtotal}`);
+    this.pageBase.plog(`actual subtotal: ${actualSubtotal}`);
 
     // 8% tax
     const expectedTotal = (expectedSubtotal * 1.08).toFixed(2);
-    console.log(`expected total: ${expectedTotal}`);
+    this.pageBase.plog(`expected total: ${expectedTotal}`);
     const actualTotal = await this.pageBase.getTextByClass(
         'summary_total_label');
-    console.log(`actual total: ${actualTotal}`);
+    this.pageBase.plog(`actual total: ${actualTotal}`);
 
     // Next two asserts: Assert the total price
     assert(actualTotal.includes(expectedTotal),

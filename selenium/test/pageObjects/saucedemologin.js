@@ -16,7 +16,6 @@ class SauceDemoLogin extends PageBase {
     await this.driver.findElement(By.id('password')).sendKeys(password);
     await this.driver.findElement(
         By.xpath('//input[@value=\'LOGIN\']')).click();
-    console.log('clicked, waiting');
     await this.getTextByClass('product_lab');
   }
 }

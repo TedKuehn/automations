@@ -13,13 +13,17 @@ class PageBase {
     this.targetUrl = targetUrl;
   }
 
+  async plog(text) {
+    console.log(`       ${text}`);
+  }
+
   async getTextByClass(classText, logText = '') {
     let x = 10;
     while (x > 0) {
       try {
         const returnVal = await this.driver.findElement(
             By.xpath(`//*[@class='${classText}']`)).getText();
-        if (!logText.match('')) console.log(`${logText} ${returnVal}`);
+        if (!logText.match('')) this.plog(`${logText} ${returnVal}`);
         return returnVal;
       } catch (error) {
         if (!error.toString().includes('NoSuchElementError')) {
