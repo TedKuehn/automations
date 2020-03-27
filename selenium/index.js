@@ -1,1 +1,0 @@
-//a program under test could go here.  Unused because we are testing external page. 

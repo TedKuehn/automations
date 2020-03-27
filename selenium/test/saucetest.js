@@ -10,8 +10,9 @@ const CheckoutStepOne = require('./pageObjects/checkout-step-one');
 const CheckoutStepTwo = require('./pageObjects/checkout-step-two');
 
 const pref = new webdriver.logging.Preferences();
+const myBrowser = process.env.TEST_BROWSER || 'chrome';
 const driver = new webdriver.Builder()
-    .forBrowser('firefox')
+    .forBrowser(myBrowser)
     .setLoggingPrefs(pref)
     .build();
 

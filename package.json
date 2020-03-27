@@ -1,19 +1,23 @@
 {
-  "name": "nwm-selenium",
+  "name": "automations",
   "version": "1.0.0",
-  "description": "Selenium Example",
+  "description": "automation examples",
   "main": "index.js",
   "scripts": {
-    "test": "mocha 'test/saucetest.js' --timeout 25000",
-    "lint": "npx eslint test"
+    "test-selenium": "mocha 'selenium/test/saucetest.js' --timeout 30000",
+    "test-selenium-firefox": "cross-env TEST_BROWSER=firefox mocha 'selenium/test/saucetest.js' --timeout 30000",
+    "test-api": "mocha 'api/test/jsonplace.js' --timeout 5000",
+    "lint": "npx eslint selenium api"
   },
   "author": "Ted Kuehn",
   "license": "MIT",
   "dependencies": {
     "mocha": "^7.1.1",
+    "node-fetch": "^2.6.0",
     "selenium-webdriver": "^4.0.0-alpha.7"
   },
   "devDependencies": {
+    "cross-env": "^7.0.2",
     "eslint": "^6.8.0",
     "eslint-config-airbnb-base": "^14.1.0",
     "eslint-config-google": "^0.14.0",
