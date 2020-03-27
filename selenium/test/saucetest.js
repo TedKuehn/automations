@@ -1,3 +1,5 @@
+const chrome = require('selenium-webdriver/chrome');
+const firefox = require('selenium-webdriver/firefox');
 const webdriver = require('selenium-webdriver');
 
 const assert = require('assert');
@@ -8,11 +10,27 @@ const PageBase = require('./pageObjects/pagebase');
 const Cart = require('./pageObjects/cart');
 const CheckoutStepOne = require('./pageObjects/checkout-step-one');
 const CheckoutStepTwo = require('./pageObjects/checkout-step-two');
+const screen = {
+  width: 640,
+  height: 480,
+};
 
 const pref = new webdriver.logging.Preferences();
+
+let fOptions = new firefox.Options();
+let cOptions = new chrome.Options();
+const head = process.env.HEADLESS || false;
+if (head == 'true') {
+  console.log('headless mode activated');
+  fOptions = new firefox.Options().headless().windowSize(screen);
+  cOptions = new chrome.Options().headless().windowSize(screen);
+}
+
 const myBrowser = process.env.TEST_BROWSER || 'chrome';
 const driver = new webdriver.Builder()
     .forBrowser(myBrowser)
+    .setChromeOptions(cOptions)
+    .setFirefoxOptions(fOptions)
     .setLoggingPrefs(pref)
     .build();
 

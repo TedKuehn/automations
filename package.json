@@ -6,7 +6,10 @@
   "scripts": {
     "test-selenium": "mocha 'selenium/test/saucetest.js' --timeout 30000",
     "test-selenium-firefox": "cross-env TEST_BROWSER=firefox mocha 'selenium/test/saucetest.js' --timeout 30000",
+    "test-selenium-headless": "cross-env HEADLESS=true mocha 'selenium/test/saucetest.js' --timeout 30000",
+    "test-selenium-firefox-headless": "cross-env HEADLESS=true TEST_BROWSER=firefox mocha 'selenium/test/saucetest.js' --timeout 30000",
     "test-api": "mocha 'api/test/jsonplace.js' --timeout 5000",
+    "test-k6": "k6 run --duration 15s k6/k6script.js",
     "lint": "npx eslint selenium api"
   },
   "author": "Ted Kuehn",
